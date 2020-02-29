@@ -1,0 +1,1 @@
+web: gunicorn treatmentplanning.wsgi --log-file -
