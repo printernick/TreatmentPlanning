@@ -1,1 +1,1 @@
-web: gunicorn treatmentplanning.wsgi --log-file -
+web: gunicorn TreatmentPlanning.wsgi --log-file -
