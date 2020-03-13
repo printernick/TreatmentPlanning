@@ -45,14 +45,14 @@
                 </div>
             </div> 
 
-            <!-- Observational/Assessment -->
+            <!-- Observations/Assessment -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="observational">Observational/Assessment</label>
-                    <select class="form-control treatment" id="observational">
-                        {% for observational in observationals %}
-                            {% if intId == observational.clientPresentation.id %}
-                                <option>{{ observational }} </option>
+                    <label class="treatment" for="observation">Observation/Assessment</label>
+                    <select class="form-control treatment" id="observation">
+                        {% for observation in observations %}
+                            {% if intId == observation.clientPresentation.id %}
+                                <option>{{ observation }} </option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -76,11 +76,11 @@
             <!-- Short Term Goal(s) -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="shortTermGoals">Short Term Goal(s)</label>
+                    <label class="treatment" for="shortTermObjectives">Short Term Objective(s)</label>
                     <select class="form-control treatment" id="shortTermGoals">
-                        {% for shortTermGoal in shortTermGoals %}
-                            {% if intId == shortTermGoal.clientPresentation.id %}
-                                <option>{{ shortTermGoal }} </option>
+                        {% for shortTermObjective in shortTermObjectives %}
+                            {% if intId == shortTermObjective.clientPresentation.id %}
+                                <option>{{ shortTermObjective }} </option>
                             {% endif %}
                         {% endfor %}
                     </select>

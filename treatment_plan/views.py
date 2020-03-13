@@ -4,7 +4,7 @@ from .models import ClientPresentation, Treatment
 def home(request):
     context = {
         "clientPresentations": ClientPresentation.objects.all(),
-        "observationals": Treatment.objects.filter(treatment_type="OB"),
+        "observations": Treatment.objects.filter(treatment_type="OB"),
         "longTermGoals": Treatment.objects.filter(treatment_type="LT"),
         "shortTermGoals": Treatment.objects.filter(treatment_type="ST"),
         "therapeuticInterventions": Treatment.objects.filter(treatment_type="TI"),

@@ -7,16 +7,16 @@ class ClientPresentation(models.Model):
         return self.name
 
 class Treatment(models.Model):
-    OBSERVATIONAL = "OB"
+    OBSERVATION = "OB"
     LONG_TERM_GOAL = "LT"
-    SHORT_TERM_GOAL = "ST"
+    SHORT_TERM_OBJECTIVE = "ST"
     THERAPEUTIC_INTERVENTION = "TI"
     CLIENT_PROGRESS = "CP"
     PLAN = "PL"
     TREATMENT_TYPE_CHOICES = [
-        (OBSERVATIONAL, "Observational/Assessment"),
+        (OBSERVATION, "Observation/Assessment"),
         (LONG_TERM_GOAL, "Long Term Goal"),
-        (SHORT_TERM_GOAL, "Short Term Goal"),
+        (SHORT_TERM_OBJECTIVE, "Short Term Objective"),
         (THERAPEUTIC_INTERVENTION, "Therapeutic Intervention"),
         (CLIENT_PROGRESS, "Client Progress"),
         (PLAN, "Plan for Next Session")
@@ -25,7 +25,7 @@ class Treatment(models.Model):
     treatment_type = models.CharField(
         max_length=2,
         choices=TREATMENT_TYPE_CHOICES,
-        default=OBSERVATIONAL)
+        default=OBSERVATION)
     description = models.TextField()
     clientPresentation = models.ForeignKey(ClientPresentation, on_delete=models.CASCADE)
 
