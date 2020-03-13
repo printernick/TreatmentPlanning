@@ -1,1 +1,1 @@
-web: gunicorn TreatmentPlanning.wsgi --timeout 15 --keep-alive 5 --log-level debug
+web: gunicorn TreatmentPlanning.wsgi
