@@ -6,7 +6,7 @@ def home(request):
         "clientPresentations": ClientPresentation.objects.all(),
         "observations": Treatment.objects.filter(treatment_type="OB"),
         "longTermGoals": Treatment.objects.filter(treatment_type="LT"),
-        "shortTermGoals": Treatment.objects.filter(treatment_type="ST"),
+        "shortTermObjectives": Treatment.objects.filter(treatment_type="ST"),
         "therapeuticInterventions": Treatment.objects.filter(treatment_type="TI"),
         "clientProgresses": Treatment.objects.filter(treatment_type="CP"),
         "plans": Treatment.objects.filter(treatment_type="PL")

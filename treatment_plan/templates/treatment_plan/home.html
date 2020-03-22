@@ -15,6 +15,9 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d787f992c4.js" crossorigin="anonymous"></script>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'treatment_plan/styles.css' %}">
+
     <title>Treatment Planning</title>
 </head>
 
@@ -73,7 +76,7 @@
                 </div>
             </div>
 
-            <!-- Short Term Goal(s) -->
+            <!-- Short Term Objective(s) -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
                     <label class="treatment" for="shortTermObjectives">Short Term Objective(s)</label>
@@ -92,9 +95,23 @@
                 <div class="col-sm-8">
                     <label class="treatment" for="therapeuticIntervention">Therapeutic Intervention</label>
                     <select class="form-control treatment" id="therapeuticIntervention">
-                        {% for therapeuticIntervention in therapeuticIntervention %}
+                        {% for therapeuticIntervention in therapeuticInterventions %}
                             {% if intId == therapeuticIntervention.clientPresentation.id %}
                                 <option>{{ therapeuticIntervention }} </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Client Progress -->
+            <div class="row justify-content-center text-center p-2">
+                <div class="col-sm-8">
+                    <label class="treatment" for="clientProgress">Client Progress</label>
+                    <select class="form-control treatment" id="clientProgress">
+                        {% for clientProgress in clientProgresses %}
+                            {% if intId == clientProgress.clientPresentation.id %}
+                                <option>{{ clientProgress }} </option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -115,6 +132,7 @@
                 </div>
             </div>
 
+            <!-- Copy to Clipboard Icon -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
                     <button id="clipboardButton" type="button" class="btn btn-lg" data-toggle="tooltip"
@@ -139,6 +157,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <!-- Custom JavaScript -->
     <script src="{% static 'treatment_plan/scripts.js' %}"></script>
 </body>
 
