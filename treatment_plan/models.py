@@ -6,6 +6,20 @@ class ClientPresentation(models.Model):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        if other != None:
+            if isinstance(other, str):
+                return self.name == other
+            elif isinstance(other, ClientPresentation):
+                return self.name == other.name
+        return False
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return self.name < other.name
+
 class Treatment(models.Model):
     OBSERVATION = "OB"
     LONG_TERM_GOAL = "LT"
@@ -32,4 +46,16 @@ class Treatment(models.Model):
     def __str__(self):
         return self.description
 
-    
+    def __eq__(self, other):
+        if other != None:
+            if isinstance(other, str):
+                return self.description == other
+            elif isinstance(other, ClientPresentation):
+                return self.description == other.description
+        return self.description == other.description
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return self.description < other.description

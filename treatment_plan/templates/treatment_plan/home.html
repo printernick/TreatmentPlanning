@@ -15,6 +15,9 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d787f992c4.js" crossorigin="anonymous"></script>
 
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'treatment_plan/styles.css' %}">
 
@@ -35,8 +38,8 @@
             <!-- Client Presentation -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="clientPresentation">Client Presentation</label>
-                    <select class="form-control treatment" id="clientPresentation">
+                    <label for="clientPresentation">Client Presentation</label>
+                    <select class="form-control selectpicker" id="clientPresentation">
                         {% for clientPresentation in clientPresentations %}
                             <option
                             {% if intId == clientPresentation.id %}
@@ -51,8 +54,8 @@
             <!-- Observations/Assessment -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="observation">Observation/Assessment</label>
-                    <select class="form-control treatment" id="observation">
+                    <label for="observation">Observation/Assessment</label>
+                    <select class="form-control selectpicker" id="observation">
                         {% for observation in observations %}
                             {% if intId == observation.clientPresentation.id %}
                                 <option>{{ observation }} </option>
@@ -65,8 +68,8 @@
             <!-- Long Term Goal(s) -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="longTermGoals">Long Term Goal(s)</label>
-                    <select class="form-control treatment" id="longTermGoals">
+                    <label for="longTermGoals">Long Term Goal(s)</label>
+                    <select class="form-control selectpicker" id="longTermGoals">
                         {% for longTermGoal in longTermGoals %}
                             {% if intId == longTermGoal.clientPresentation.id %}
                                 <option>{{ longTermGoal }} </option>
@@ -79,8 +82,8 @@
             <!-- Short Term Objective(s) -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="shortTermObjectives">Short Term Objective(s)</label>
-                    <select class="form-control treatment" id="shortTermGoals">
+                    <label for="shortTermObjectives">Short Term Objective(s)</label>
+                    <select class="form-control selectpicker" id="shortTermObjectives">
                         {% for shortTermObjective in shortTermObjectives %}
                             {% if intId == shortTermObjective.clientPresentation.id %}
                                 <option>{{ shortTermObjective }} </option>
@@ -93,8 +96,8 @@
             <!-- Therapeutic Intervention -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="therapeuticIntervention">Therapeutic Intervention</label>
-                    <select class="form-control treatment" id="therapeuticIntervention">
+                    <label for="therapeuticIntervention">Therapeutic Intervention</label>
+                    <select class="form-control selectpicker" id="therapeuticIntervention">
                         {% for therapeuticIntervention in therapeuticInterventions %}
                             {% if intId == therapeuticIntervention.clientPresentation.id %}
                                 <option>{{ therapeuticIntervention }} </option>
@@ -107,8 +110,8 @@
             <!-- Client Progress -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="clientProgress">Client Progress</label>
-                    <select class="form-control treatment" id="clientProgress">
+                    <label for="clientProgress">Client Progress</label>
+                    <select class="form-control selectpicker" id="clientProgress">
                         {% for clientProgress in clientProgresses %}
                             {% if intId == clientProgress.clientPresentation.id %}
                                 <option>{{ clientProgress }} </option>
@@ -121,8 +124,8 @@
             <!-- Plan for Next Session -->
             <div class="row justify-content-center text-center p-2">
                 <div class="col-sm-8">
-                    <label class="treatment" for="plans">Plan for Next Session</label>
-                    <select class="form-control treatment" id="plans">
+                    <label for="plans">Plan for Next Session</label>
+                    <select class="form-control selectpicker" id="plans" multiple data-max-options="3">
                         {% for plan in plans %}
                             {% if intId == plan.clientPresentation.id %}
                                 <option>{{ plan }} </option>
@@ -146,6 +149,7 @@
     </div>
 
     <!-- Optional JavaScript -->
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -156,6 +160,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <!-- bootstrap-select -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="{% static 'treatment_plan/scripts.js' %}"></script>

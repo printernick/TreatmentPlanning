@@ -3,20 +3,20 @@ from .models import ClientPresentation, Treatment
 
 def home(request):
     context = {
-        "clientPresentations": ClientPresentation.objects.all(),
-        "observations": Treatment.objects.filter(treatment_type="OB"),
-        "longTermGoals": Treatment.objects.filter(treatment_type="LT"),
-        "shortTermObjectives": Treatment.objects.filter(treatment_type="ST"),
-        "therapeuticInterventions": Treatment.objects.filter(treatment_type="TI"),
-        "clientProgresses": Treatment.objects.filter(treatment_type="CP"),
-        "plans": Treatment.objects.filter(treatment_type="PL")
+        "clientPresentations": sorted(ClientPresentation.objects.all()),
+        "observations": sorted(Treatment.objects.filter(treatment_type="OB")),
+        "longTermGoals": sorted(Treatment.objects.filter(treatment_type="LT")),
+        "shortTermObjectives": sorted(Treatment.objects.filter(treatment_type="ST")),
+        "therapeuticInterventions": sorted(Treatment.objects.filter(treatment_type="TI")),
+        "clientProgresses": sorted(Treatment.objects.filter(treatment_type="CP")),
+        "plans": sorted(Treatment.objects.filter(treatment_type="PL"))
     }
     
     clientPresentationId = request.GET.get('id', None)
     if clientPresentationId != None:
         context['id'] = clientPresentationId
     else:
-        context['id'] = 1
-
+        context['id'] = context["clientPresentations"][0].id
+    
     return render(request, 'treatment_plan/home.html', context)
 

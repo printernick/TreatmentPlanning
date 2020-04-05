@@ -15,14 +15,27 @@ $(document).ready(function () {
     // Clipboard button. Copy labels and options to clipboard
     $("#clipboardButton").on('click', function () {
         var copiedString = '';
-        $(".treatment").each(function (index) {
-            if ($(this).is("select") && $(this).val() != null) {
-                copiedString = copiedString.concat($(this).val());
-                copiedString = copiedString.concat("\r\n");
+        $(".selectpicker").each(function (index) {
+
+            //Add labels
+            copiedString += $(this).prop("labels")[0].textContent + "\r\n";
+
+            //Add each selected option
+            var selectedOptions = $(this).prop("selectedOptions");
+            if (selectedOptions.length == 0)
+            {
+                copiedString += "\r\n";
             }
-            else {
-                copiedString = copiedString.concat($(this).text());
+            else
+            {
+                
+                //Loop through in case of multiple selected options
+                $(selectedOptions).each(function (index) {
+                    copiedString += $(this)[0].textContent + "\r\n";
+                });
             }
+
+            //Extra line after each section
             copiedString = copiedString.concat("\r\n");
         });
 
