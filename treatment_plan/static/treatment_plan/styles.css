@@ -2,6 +2,19 @@
     border-width:2px !important;
 }
 
+/* On small Screens */
+@media (max-width: 575px) {
+    /* Hide divider */
+    .custom-border {
+        border-right: none !important;
+    }
+
+    /* Hide "Resources:" */
+    .resources-label {
+        display: none;
+    }
+}
+
 /* Overwrite CSS in bootstrap to be able to
 embed videos in Modals */
 /* .modal.fade .modal-dialog {

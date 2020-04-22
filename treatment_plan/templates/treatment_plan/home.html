@@ -138,18 +138,17 @@
             <!-- TODO FIX PROBLEM WITH DIVIDER BEING TOO CLOSE TO CLIPBOARD WHEN SMALLER SCREENSIZE OR 
             WHEN THEY GO ONTO DIFFERENT ROWS
             STOP AUTOPLAYING VIDEOS
-            ADD DOCUMENT MODAL
             -->
             <!-- Bottom Toolbar -->
-            <div class="row justify-content-center text-center align-items-center">
-                <div class="col-sm-1 border-right border-primary custom-border py-0">
+            <div class="row justify-content-center">
+                <div class="col-sm-auto py-0 text-center border-right border-primary custom-border">
                     <button id="clipboardButton" type="button" class="btn btn-lg py-0" data-toggle="tooltip"
                     data-placement="bottom" title="Copy to clipboard">
                         <i class="fas fa-clipboard icon-4x"></i>
                     </button>
                 </div>
-                <div class="col-sm-auto py-0">
-                    <span class="pl-2 py-0">Resources: </span>
+                <div class="col-sm-auto py-0 text-center">
+                    <span class="py-0 resources-label">Resources: </span>
                     <button id="videoButton" type="button" class="btn btn-lg py-0" data-toggle="tooltip"
                     data-placement="bottom" title="Watch Video">
                         <i class="fas fa-video icon-4x" data-toggle="modal" data-target="#videoModal"></i>
