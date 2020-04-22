@@ -123,7 +123,7 @@
 
             <!-- Plan for Next Session -->
             <div class="row justify-content-center text-center p-2">
-                <div class="col-sm-8">
+                <div class="col-sm-8 mb-3">
                     <label for="plans">Plan for Next Session</label>
                     <select class="form-control selectpicker" id="plans" multiple data-max-options="3">
                         {% for plan in plans %}
@@ -135,18 +135,106 @@
                 </div>
             </div>
 
-            <!-- Copy to Clipboard Icon -->
-            <div class="row justify-content-center text-center p-2">
-                <div class="col-sm-8">
-                    <button id="clipboardButton" type="button" class="btn btn-lg" data-toggle="tooltip"
+            <!-- TODO FIX PROBLEM WITH DIVIDER BEING TOO CLOSE TO CLIPBOARD WHEN SMALLER SCREENSIZE OR 
+            WHEN THEY GO ONTO DIFFERENT ROWS
+            STOP AUTOPLAYING VIDEOS
+            ADD DOCUMENT MODAL
+            -->
+            <!-- Bottom Toolbar -->
+            <div class="row justify-content-center text-center align-items-center">
+                <div class="col-sm-1 border-right border-primary custom-border py-0">
+                    <button id="clipboardButton" type="button" class="btn btn-lg py-0" data-toggle="tooltip"
                     data-placement="bottom" title="Copy to clipboard">
                         <i class="fas fa-clipboard icon-4x"></i>
                     </button>
                 </div>
+                <div class="col-sm-auto py-0">
+                    <span class="pl-2 py-0">Resources: </span>
+                    <button id="videoButton" type="button" class="btn btn-lg py-0" data-toggle="tooltip"
+                    data-placement="bottom" title="Watch Video">
+                        <i class="fas fa-video icon-4x" data-toggle="modal" data-target="#videoModal"></i>
+                    </button>
+                    <button id="documentButton" type="button" class="btn btn-lg py-0" data-toggle="tooltip"
+                    data-placement="bottom" title="View Document" data-target="#documentModal">
+                        <i class="fas fa-file icon-4x" data-toggle="modal" data-target="#documentModal"></i>
+                    </button>
+                </div>
             </div>
+
+            <!-- Video Modal -->
+            <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="videoModalTitle">Videos</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        {% for video in videos %}
+                            {% if intId == video.clientPresentation.id %}
+                                {% if video.URL or video.path %}
+                                    <div class="embed-responsive embed-responsive-16by9 mb-2">
+                                    {% if video.path %}
+                                        {% with video.path.name|cut:"treatment_plan/static/" as videoPath %}
+                                            <iframe class="embed-responsive-item" 
+                                            src="{% static videoPath %}" allowfullscreen></iframe>
+                                        {% endwith %}
+                                    {% else %}
+                                        <iframe class="embed-responsive-item" 
+                                        src="{{ video.URL }}" allowfullscreen></iframe>
+                                    {% endif %}
+                                    </div> <!-- close embed-responsive div-->
+                                {% endif %} <!-- end if video URL or Path exists -->
+                            {% endif %} <!-- end if video for clientPresentation -->
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Document Modal -->
+            <div class="modal fade" id="documentModal" tabindex="-1" role="dialog" aria-labelledby="documentModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="documentModalTitle">Documents</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush"></ul>
+                        {% for document in documents %}
+                            {% if intId == document.clientPresentation.id %}
+                                {% if document.URL or document.path %}
+                                    <li class="list-group-item">
+                                    {% if document.path %}
+                                        {% with document.path.name|cut:"treatment_plan/static/" as documentPath %}
+                                            <a href="{% static documentPath %}">{{ document.name }}</a>
+                                        {% endwith %}
+                                    {% else %}
+                                        <a href="{{ document.URL }}">{{ document.name }}</a>
+                                    {% endif %}
+                                    </li> <!--close list-group-item -->
+                                {% endif %} <!-- end if document URL or Path exists -->
+                            {% endif %} <!-- end if document for clientPresentation -->
+                        {% endfor %}
+                        </ul> <!-- close list-group-->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         {% endwith %}
         
-    </div>
+    </div> <!-- End container-fluid -->
 
     <!-- Optional JavaScript -->
     
