@@ -37,6 +37,9 @@ class ClientPresentation(models.Model):
     def __lt__(self, other):
         return self.name < other.name
 
+    def __hash__(self):
+        return hash(self._get_pk_val())
+
 class Treatment(models.Model):
     OBSERVATION = "OB"
     LONG_TERM_GOAL = "LT"
@@ -76,6 +79,9 @@ class Treatment(models.Model):
 
     def __lt__(self, other):
         return self.description < other.description
+
+    def __hash__(self):
+        return hash(self._get_pk_val())
 
 class ExternalResource(models.Model):
     VIDEO = "VD"

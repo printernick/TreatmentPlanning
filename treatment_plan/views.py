@@ -19,7 +19,6 @@ def home(request):
         context['id'] = clientPresentationId
     else:
         context['id'] = context["clientPresentations"][0].id
-    print(context['id'])
-    
+            
     return render(request, 'treatment_plan/home.html', context)
 
